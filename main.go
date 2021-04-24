@@ -1,7 +1,7 @@
 package main
 
-import (
-)
+import "github.com/thomasgassmann/robomoto/cmd"
 
 func main() {
+	cmd.Execute()
 }
