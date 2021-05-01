@@ -2,14 +2,19 @@ package cmd
 
 import (
 	"github.com/thomasgassmann/robomoto/pkg/romototo"
+	"github.com/thomasgassmann/robomoto/pkg/romototo/notifications"
 	"github.com/thomasgassmann/robomoto/pkg/romototo/web"
 )
 
 
 func Execute() {
 	driver := web.BrowserDriver{}
-	err := driver.Init()
-	if err != nil {
+	notifier := notifications.Notifier{}
+	if err := driver.Init(); err != nil {
+		panic(err)
+	}
+
+	if err := notifier.Init(); err != nil {
 		panic(err)
 	}
 
