@@ -18,6 +18,8 @@ func Execute() {
 		panic(err)
 	}
 
+	housingChannel := make(chan romototo.HousingResult)
+
 	livingScience := new(romototo.LivingScienceHousingProvider)
 	// studentVillage := new(romototo.StudentVillageHousingProvider)
 	providers := []romototo.HousingProvider{livingScience}
