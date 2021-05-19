@@ -6,9 +6,9 @@ type Notifier struct {
 }
 
 func (t *Notifier) Init() error {
-
+	return nil
 }
 
-func (t *Notifier) Send(housing []romototo.Housing) {
-
+func (t *Notifier) Send(housing romototo.HousingResult) {
+	
 }
