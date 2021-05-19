@@ -30,12 +30,18 @@ func Execute() {
 			panic(err)
 		}
 
-		housings, err := provider.Query()
-		if err != nil {
-			notifier.Send(housings)
-			for _, housing := range housings.Results {
-				println(housing.RoomNumber)
+		go func() {
+			housings, err := provider.Query()
+			if err != nil {
+				notifier.Send(housings)
+				for _, housing := range housings.Results {
+					println(housing.RoomNumber)
+				}
 			}
-		}
+		}()
+	}
+
+	for {
+		housing := <-housingChannel
 	}
 }
