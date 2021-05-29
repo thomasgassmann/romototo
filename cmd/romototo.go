@@ -25,17 +25,21 @@ func Execute() {
 	providers := []romototo.HousingProvider{livingScience}
 
 	for _, provider := range providers {
-		provider.Init(&driver)
-		if err := provider.Refresh(); err != nil {
+		currentProvider := provider
+		if err := currentProvider.Init(&driver); err != nil {
+			panic(err)
+		}
+		
+		
+		if err := currentProvider.Refresh(); err != nil {
 			panic(err)
 		}
 
 		go func() {
-			housings, err := provider.Query()
-			if err != nil {
-				notifier.Send(housings)
-				for _, housing := range housings.Results {
-					println(housing.RoomNumber)
+			for {
+				housings, err := currentProvider.Query()
+				if err != nil {
+					housingChannel <- housings
 				}
 			}
 		}()
@@ -43,5 +47,9 @@ func Execute() {
 
 	for {
 		housing := <-housingChannel
+
+		for _, item := range housing.Results {
+			println(item.RoomNumber)
+		}
 	}
 }

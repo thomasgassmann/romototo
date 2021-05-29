@@ -15,14 +15,13 @@ type LivingScienceHousingProvider struct  {
 	driver *web.BrowserDriver
 }
 
-func (t *LivingScienceHousingProvider) Init(driver *web.BrowserDriver) {
+func (t *LivingScienceHousingProvider) Init(driver *web.BrowserDriver) error {
 	t.driver = driver
-	t.driver.Driver().Get(LivingScienceUrl)
+	return t.driver.Driver().Get(LivingScienceUrl)
 }
 
 func (t *LivingScienceHousingProvider) Refresh() error {
-	t.driver.Driver().Refresh()
-	return nil
+	return t.driver.Driver().Refresh()
 }
 
 func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
