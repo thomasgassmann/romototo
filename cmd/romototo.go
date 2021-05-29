@@ -20,9 +20,10 @@ func Execute() {
 
 	housingChannel := make(chan romototo.HousingResult)
 
-	livingScience := new(romototo.LivingScienceHousingProvider)
+	// livingScience := new(romototo.LivingScienceHousingProvider)
 	// studentVillage := new(romototo.StudentVillageHousingProvider)
-	providers := []romototo.HousingProvider{livingScience}
+	fake := new(romototo.FakeHousingProvider)
+	providers := []romototo.HousingProvider{fake}
 
 	for _, provider := range providers {
 		currentProvider := provider
