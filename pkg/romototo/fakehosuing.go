@@ -22,6 +22,7 @@ func (t *FakeHousingProvider) Query() (HousingResult, error) {
 				RoomNumber: "abc",
 			},
 		},
+		Id: 1,
 		Screenshot: []byte{},
 	}, nil
 }

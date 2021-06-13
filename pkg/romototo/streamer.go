@@ -36,10 +36,12 @@ func (t *HousingStreamer) Run() {
 		}
 
 		go func() {
+			var lastHousingId int
 			for {
 				housings, err := currentProvider.Query()
-				if err != nil {
+				if err == nil && lastHousingId != housings.Id {
 					housingChannel <- housings
+					lastHousingId = housings.Id
 				}
 			}
 		}()

@@ -8,5 +8,7 @@ func (t *Notifier) Init() error {
 }
 
 func (t *Notifier) Send(housing HousingResult) {
-	
+	for _, result := range housing.Results {
+		println(result.RoomNumber)
+	}
 }
