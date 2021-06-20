@@ -5,7 +5,6 @@ import (
 	"github.com/thomasgassmann/robomoto/pkg/romototo/web"
 )
 
-
 func Execute() {
 	driver := web.BrowserDriver{}
 	notifier := romototo.Notifier{}

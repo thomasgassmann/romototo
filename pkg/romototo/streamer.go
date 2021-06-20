@@ -7,7 +7,7 @@ import (
 type HousingStreamer struct {
 	providers []HousingProvider
 	notifiers []Notifier
-	driver web.BrowserDriver
+	driver    web.BrowserDriver
 }
 
 func (t *HousingStreamer) Init(driver web.BrowserDriver) {

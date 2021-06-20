@@ -17,12 +17,12 @@ func (t *FakeHousingProvider) Refresh() error {
 
 func (t *FakeHousingProvider) Query() (HousingResult, error) {
 	return HousingResult{
-		Results:    []Housing{
+		Results: []Housing{
 			{
 				RoomNumber: "abc",
 			},
 		},
-		Id: 1,
+		Id:         1,
 		Screenshot: []byte{},
 	}, nil
 }

@@ -8,12 +8,12 @@ import (
 )
 
 type BrowserDriver struct {
-	service *selenium.Service
+	service   *selenium.Service
 	webDriver *selenium.WebDriver
 }
 
 const (
-	port = 8080
+	port         = 8080
 	seleniumPath = "/usr/share/selenium-server/selenium-server-standalone.jar"
 	chromeDriver = "/usr/bin/chromedriver"
 )

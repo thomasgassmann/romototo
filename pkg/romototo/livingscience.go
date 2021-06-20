@@ -8,11 +8,11 @@ import (
 
 const (
 	LivingScienceUrl = "http://reservation.livingscience.ch/wohnen"
-	RowSelector = ".row[class*=status]"
-	NumberSelector = "span.spalte7"
+	RowSelector      = ".row[class*=status]"
+	NumberSelector   = "span.spalte7"
 )
 
-type LivingScienceHousingProvider struct  {
+type LivingScienceHousingProvider struct {
 	driver *web.BrowserDriver
 }
 
@@ -55,6 +55,6 @@ func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
 	return HousingResult{
 		Results:    offers,
 		Screenshot: screenshot,
-		Id: hash.Sum32(),
+		Id:         hash.Sum32(),
 	}, nil
 }
