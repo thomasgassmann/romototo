@@ -36,7 +36,7 @@ func (t *HousingStreamer) Run() {
 		}
 
 		go func() {
-			var lastHousingId int
+			var lastHousingId uint32
 			for {
 				housings, err := currentProvider.Query()
 
