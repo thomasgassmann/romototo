@@ -38,6 +38,10 @@ func (t *HousingStreamer) Run() {
 		go func() {
 			var lastHousingId uint32
 			for {
+				if err := currentProvider.Refresh(); err != nil {
+					continue
+				}
+
 				housings, err := currentProvider.Query()
 
 				if err == nil && lastHousingId != housings.Id {
