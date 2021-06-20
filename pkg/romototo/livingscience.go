@@ -47,8 +47,9 @@ func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
 		})
 	}
 
+	screenshot, _ := t.driver.Driver().Screenshot()
 	return HousingResult{
 		Results:    offers,
-		Screenshot: nil,
+		Screenshot: screenshot,
 	}, nil
 }

@@ -21,7 +21,7 @@ func Execute() {
 	streamer.Init(driver)
 	streamer.AddNotifier(notifier)
 
-	streamer.AddProvider(new(romototo.FakeHousingProvider))
+	streamer.AddProvider(new(romototo.LivingScienceHousingProvider))
 
 	streamer.Run()
 }

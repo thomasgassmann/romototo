@@ -2,6 +2,7 @@ package web
 
 import (
 	"fmt"
+	"github.com/tebeka/selenium/chrome"
 
 	"github.com/tebeka/selenium"
 )
@@ -43,7 +44,14 @@ func (t *BrowserDriver) Init() error {
 		return err
 	}
 
+	chromeCaps := chrome.Capabilities{
+		Args: []string{
+			"--headless",
+			"--window-size=1920,1080",
+		},
+	}
 	caps := selenium.Capabilities{"browserName": "chrome"}
+	caps.AddChrome(chromeCaps)
 	wd, err := selenium.NewRemote(caps, fmt.Sprintf("http://localhost:%d/wd/hub", port))
 	if err != nil {
 		return err
