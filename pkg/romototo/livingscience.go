@@ -3,6 +3,7 @@ package romototo
 import (
 	"github.com/tebeka/selenium"
 	"github.com/thomasgassmann/robomoto/pkg/romototo/web"
+	"hash/fnv"
 )
 
 const (
@@ -30,6 +31,8 @@ func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
 		return HousingResult{}, err
 	}
 
+	hash := fnv.New32a()
+
 	var offers []Housing
 	for _, row := range rows {
 		roomNumber, err := row.FindElement(selenium.ByCSSSelector, NumberSelector)
@@ -42,6 +45,7 @@ func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
 			continue
 		}
 
+		hash.Write([]byte(numberText))
 		offers = append(offers, Housing{
 			RoomNumber: numberText,
 		})
@@ -51,5 +55,6 @@ func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
 	return HousingResult{
 		Results:    offers,
 		Screenshot: screenshot,
+		Id: hash.Sum32(),
 	}, nil
 }

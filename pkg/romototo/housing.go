@@ -7,5 +7,5 @@ type Housing struct {
 type HousingResult struct {
 	Results []Housing
 	Screenshot []byte
-	Id int
+	Id uint32
 }

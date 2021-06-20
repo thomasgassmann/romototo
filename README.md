@@ -1,5 +1,9 @@
 # romototo
-ETH housing bot (livingscience and studentvillage)
+
+romototo ETH housing bot
+
+# Deriving its name
+
 
 https://studentvillage.ch/en/accommodation/
 
