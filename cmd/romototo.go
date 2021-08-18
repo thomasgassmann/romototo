@@ -2,12 +2,13 @@ package cmd
 
 import (
 	"github.com/thomasgassmann/robomoto/pkg/romototo"
+	"github.com/thomasgassmann/robomoto/pkg/romototo/config"
 	"github.com/thomasgassmann/robomoto/pkg/romototo/web"
 )
 
-func Execute() {
+func Execute(config *config.Config) {
 	driver := web.BrowserDriver{}
-	notifier := romototo.Notifier{}
+	notifier := romototo.MailNotifier{}
 	if err := driver.Init(); err != nil {
 		panic(err)
 	}
