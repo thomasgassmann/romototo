@@ -1,6 +1,7 @@
 package romototo
 
 import (
+	"errors"
 	"github.com/tebeka/selenium"
 	"github.com/thomasgassmann/robomoto/pkg/romototo/web"
 	"hash/fnv"
@@ -29,6 +30,10 @@ func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
 	rows, err := t.driver.Driver().FindElements(selenium.ByCSSSelector, RowSelector)
 	if err != nil {
 		return HousingResult{}, err
+	}
+
+	if len(rows) == 0 {
+		return HousingResult{}, errors.New("no housings found")
 	}
 
 	hash := fnv.New32a()

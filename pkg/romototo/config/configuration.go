@@ -5,13 +5,15 @@ import (
 	"io/ioutil"
 )
 
+type MailConfig struct {
+	Host     string `yaml:"host"`
+	Port     string `yaml:"port"`
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
+}
+
 type Config struct {
-	Mail struct {
-		Host     string `yaml:"host"`
-		Port     string `yaml:"port"`
-		Username string `yaml:"username"`
-		Password string `yaml:"password"`
-	} `yaml:"mail"`
+	Mail MailConfig `yaml:"mail"`
 }
 
 func ParseConfig(configPath string) (*Config, error) {

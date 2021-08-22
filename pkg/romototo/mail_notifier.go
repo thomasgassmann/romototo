@@ -1,9 +1,13 @@
 package romototo
 
+import (
+	"github.com/thomasgassmann/robomoto/pkg/romototo/config"
+)
+
 type MailNotifier struct {
 }
 
-func (t MailNotifier) Init() error {
+func (t MailNotifier) Init(mail config.MailConfig) error {
 	return nil
 }
 

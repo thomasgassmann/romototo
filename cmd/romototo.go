@@ -13,7 +13,7 @@ func Execute(config *config.Config) {
 		panic(err)
 	}
 
-	if err := notifier.Init(); err != nil {
+	if err := notifier.Init(config.Mail); err != nil {
 		panic(err)
 	}
 
