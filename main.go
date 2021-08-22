@@ -13,11 +13,10 @@ func main() {
 		panic(err)
 	}
 
-
 	cmd.Execute(config)
 }
 
-func parseConfigPath() (string) {
+func parseConfigPath() string {
 	var configPath string
 	flag.StringVar(&configPath, "config", "./config.yml", "path to config file")
 	flag.Parse()

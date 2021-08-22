@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/goccy/go-yaml"
-	"os"
+	"io/ioutil"
 )
 
 type Config struct {
@@ -11,21 +11,18 @@ type Config struct {
 		Port     string `yaml:"port"`
 		Username string `yaml:"username"`
 		Password string `yaml:"password"`
-	}
+	} `yaml:"mail"`
 }
 
 func ParseConfig(configPath string) (*Config, error) {
 	config := &Config{}
 
-	file, err := os.Open(configPath)
+	bytes, err := ioutil.ReadFile(configPath)
 	if err != nil {
 		return nil, err
 	}
 
-	defer file.Close()
-
-	d := yaml.NewDecoder(file)
-	if err := d.Decode(&config); err != nil {
+	if err := yaml.Unmarshal(bytes, config); err != nil {
 		return nil, err
 	}
 
