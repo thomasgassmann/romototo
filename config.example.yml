@@ -1,0 +1,5 @@
+mail:
+  host: smtp
+  port: port
+  username: user
+  password: password
