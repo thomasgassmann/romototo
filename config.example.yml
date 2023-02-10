@@ -3,3 +3,6 @@ mail:
   port: port
   username: user
   password: password
+crawl_interval: 86400
+state: './romototo.tmp'
+max_rent: 650
