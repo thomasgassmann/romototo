@@ -15,20 +15,31 @@ const (
 	NumberSelector   = "span.spalte7"
 )
 
-type LivingScienceHousingProvider struct {
+type SeleniumLivingScienceHousingProvider struct {
 	driver *web.BrowserDriver
 }
 
-func (t *LivingScienceHousingProvider) Init(driver *web.BrowserDriver) error {
-	t.driver = driver
-	return t.driver.Driver().Get(LivingScienceUrl)
+func InitSeleniumLivingScience() (*SeleniumLivingScienceHousingProvider, error) {
+	driver := web.BrowserDriver{}
+	if err := driver.Init(); err != nil {
+		return nil, err
+	}
+
+	err := driver.Driver().Get(LivingScienceUrl)
+	if err != nil {
+		return nil, err
+	}
+
+	return &SeleniumLivingScienceHousingProvider{
+		driver: &driver,
+	}, nil
 }
 
-func (t *LivingScienceHousingProvider) Refresh() error {
+func (t *SeleniumLivingScienceHousingProvider) Refresh() error {
 	return t.driver.Driver().Refresh()
 }
 
-func (t *LivingScienceHousingProvider) Query() (romototo.HousingResult, error) {
+func (t *SeleniumLivingScienceHousingProvider) Query() (romototo.HousingResult, error) {
 	rows, err := t.driver.Driver().FindElements(selenium.ByCSSSelector, RowSelector)
 	if err != nil {
 		return romototo.HousingResult{}, err

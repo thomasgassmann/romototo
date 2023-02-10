@@ -2,6 +2,7 @@ package web
 
 import (
 	"fmt"
+
 	"github.com/tebeka/selenium/chrome"
 
 	"github.com/tebeka/selenium"

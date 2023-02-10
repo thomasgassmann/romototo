@@ -1,17 +1,8 @@
 package romototo
 
-import (
-	"github.com/thomasgassmann/romototo/pkg/romototo/web"
-)
-
 type HousingStreamer struct {
 	providers []HousingProvider
 	notifiers []Notifier
-	driver    web.BrowserDriver
-}
-
-func (t *HousingStreamer) Init(driver web.BrowserDriver) {
-	t.driver = driver
 }
 
 func (t *HousingStreamer) AddNotifier(notifier Notifier) {
@@ -27,10 +18,6 @@ func (t *HousingStreamer) Run() {
 
 	for _, provider := range t.providers {
 		currentProvider := provider
-		if err := currentProvider.Init(&t.driver); err != nil {
-			panic(err)
-		}
-
 		if err := currentProvider.Refresh(); err != nil {
 			panic(err)
 		}
