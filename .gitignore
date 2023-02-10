@@ -18,3 +18,5 @@
 
 main
 config.yml
+
+__pycache__/
