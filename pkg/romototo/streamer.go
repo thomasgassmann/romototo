@@ -1,7 +1,7 @@
 package romototo
 
 import (
-	"github.com/thomasgassmann/robomoto/pkg/romototo/web"
+	"github.com/thomasgassmann/romototo/pkg/romototo/web"
 )
 
 type HousingStreamer struct {

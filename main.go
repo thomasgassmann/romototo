@@ -2,8 +2,9 @@ package main
 
 import (
 	"flag"
-	"github.com/thomasgassmann/robomoto/cmd"
-	"github.com/thomasgassmann/robomoto/pkg/romototo/config"
+
+	"github.com/thomasgassmann/romototo/cmd"
+	"github.com/thomasgassmann/romototo/pkg/romototo/config"
 )
 
 func main() {

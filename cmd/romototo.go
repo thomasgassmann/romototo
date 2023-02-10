@@ -1,9 +1,10 @@
 package cmd
 
 import (
-	"github.com/thomasgassmann/robomoto/pkg/romototo"
-	"github.com/thomasgassmann/robomoto/pkg/romototo/config"
-	"github.com/thomasgassmann/robomoto/pkg/romototo/web"
+	"github.com/thomasgassmann/romototo/pkg/romototo"
+	"github.com/thomasgassmann/romototo/pkg/romototo/config"
+	"github.com/thomasgassmann/romototo/pkg/romototo/livingscience"
+	"github.com/thomasgassmann/romototo/pkg/romototo/web"
 )
 
 func Execute(config *config.Config) {
@@ -21,7 +22,7 @@ func Execute(config *config.Config) {
 	streamer.Init(driver)
 	streamer.AddNotifier(notifier)
 
-	streamer.AddProvider(new(romototo.LivingScienceHousingProvider))
+	streamer.AddProvider(new(livingscience.LivingScienceHousingProvider))
 
 	streamer.Run()
 }

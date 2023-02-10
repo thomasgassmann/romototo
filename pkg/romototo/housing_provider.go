@@ -1,6 +1,6 @@
 package romototo
 
-import "github.com/thomasgassmann/robomoto/pkg/romototo/web"
+import "github.com/thomasgassmann/romototo/pkg/romototo/web"
 
 type HousingProvider interface {
 	Init(driver *web.BrowserDriver) error

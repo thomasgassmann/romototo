@@ -1,4 +1,4 @@
-module github.com/thomasgassmann/robomoto
+module github.com/thomasgassmann/romototo
 
 go 1.16
 

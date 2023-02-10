@@ -1,10 +1,12 @@
-package romototo
+package livingscience
 
 import (
 	"errors"
-	"github.com/tebeka/selenium"
-	"github.com/thomasgassmann/robomoto/pkg/romototo/web"
 	"hash/fnv"
+
+	"github.com/tebeka/selenium"
+	"github.com/thomasgassmann/romototo/pkg/romototo"
+	"github.com/thomasgassmann/romototo/pkg/romototo/web"
 )
 
 const (
@@ -26,19 +28,19 @@ func (t *LivingScienceHousingProvider) Refresh() error {
 	return t.driver.Driver().Refresh()
 }
 
-func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
+func (t *LivingScienceHousingProvider) Query() (romototo.HousingResult, error) {
 	rows, err := t.driver.Driver().FindElements(selenium.ByCSSSelector, RowSelector)
 	if err != nil {
-		return HousingResult{}, err
+		return romototo.HousingResult{}, err
 	}
 
 	if len(rows) == 0 {
-		return HousingResult{}, errors.New("no housings found")
+		return romototo.HousingResult{}, errors.New("no housings found")
 	}
 
 	hash := fnv.New32a()
 
-	var offers []Housing
+	var offers []romototo.Housing
 	for _, row := range rows {
 		roomNumber, err := row.FindElement(selenium.ByCSSSelector, NumberSelector)
 		if err != nil {
@@ -51,13 +53,13 @@ func (t *LivingScienceHousingProvider) Query() (HousingResult, error) {
 		}
 
 		hash.Write([]byte(numberText))
-		offers = append(offers, Housing{
+		offers = append(offers, romototo.Housing{
 			RoomNumber: numberText,
 		})
 	}
 
 	screenshot, _ := t.driver.Driver().Screenshot()
-	return HousingResult{
+	return romototo.HousingResult{
 		Results:    offers,
 		Screenshot: screenshot,
 		Id:         hash.Sum32(),
