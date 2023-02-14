@@ -25,7 +25,7 @@ def run_with_config(config):
         for provider in providers:
             try:
                 housing: List[Housing] = provider.get_housing()
-                logging.info(f'Current provider yielded {len(housing)} items)')
+                logging.info(f'Current provider yielded {len(housing)} items')
             except Exception as e:
                 logging.error(f'Error while crawling: {e}')
                 continue
