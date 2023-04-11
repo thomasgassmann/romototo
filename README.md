@@ -9,3 +9,7 @@ romototo exec config.yml
 ```
 
 For configuration, see `config.example.yml`.
+
+## Etymology
+
+Why is it called `romototo`? I do not remember, but some linguistics student recommended naming it that way.
