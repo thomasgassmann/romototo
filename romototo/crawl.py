@@ -150,4 +150,4 @@ def check_wohnenuzhethz():
         housings.append(housing)
     return housings
 
-PROVIDERS = [Provider(check_woko), Provider(check_living_science), Provider(check_wohnenuzhethz)]
+PROVIDERS = [Provider(check_woko)]
